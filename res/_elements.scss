@@ -1,0 +1,67 @@
+p {
+  line-height: 1.5em;
+}
+
+pre {
+  position: relative;
+  margin-inline: 0.5em;
+  line-height: 1.5em;
+}
+
+code {
+  font-family: IBMPlexMono, monospace;
+  font-size: 0.9em;
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+img {
+  background-color: white;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+figure {
+  max-width: 80%;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+figcaption {
+  margin-inline: auto;
+  color: var(--fg-secondary);
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  background-color: inherit;
+}
+
+mjx-container {
+  overflow-x: auto;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+a:link,
+a:visited {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+a:active {
+  text-decoration: underline;
+}

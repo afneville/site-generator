@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="system-theme">
+
+<head>
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+$for(author-meta)$
+<meta name="author" content="$author-meta$" />
+$endfor$
+$if(date-meta)$
+<meta name="dcterms.date" content="$date-meta$" />
+$endif$
+$if(keywords)$
+<meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+$endif$
+$if(description-meta)$
+<meta name="description" content="$description-meta$" />
+$endif$
+<title>Blog - Alex Neville</title>
+$for(header-includes)$
+$header-includes$
+$endfor$
+$if(math)$
+$math$
+$endif$
+<link rel="icon" href="https://cdn.aneville.uk/res/panda.png" />
+<link href="/res/index.css" rel="stylesheet" />
+<script src="/res/windowEvents.js" defer></script>
+<script src="/res/buttons.js" defer></script>
+<script src="/res/theme.js" defer></script>
+<link rel="stylesheet" href="https://cdn.aneville.uk/highlightjs/styles/stackoverflow-light.min.css" id="code-blocks-light">
+<link rel="stylesheet alternate" href="https://cdn.aneville.uk/highlightjs/styles/stackoverflow-dark.min.css" id="code-blocks-dark">
+<script src="https://cdn.aneville.uk/highlightjs/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.querySelector("ul").clientHeight + 'px';
+  }
+</script>
+<link rel="stylesheet" href="https://cdn.aneville.uk/nerd-fonts/nerd-fonts.css" />
+</head>
+
+<body>
+
+${ header.html() }
+
+<main class="content-width">
+
+<article>
+$body$
+
+<div id="license-notice">
+<h3>License Notice</h1>
+<p>
+Unless explicitly stated otherwise, the content of this website
+is my own work. All original content is distributed under the
+terms of a
+<i>copyleft</i>
+license, depending on its type:
+</p>
+<ul>
+<li>
+All text, images and other graphics are distributed under the
+terms of the
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+Creative Commons Attribution-ShareAlike 4.0 license</a>.
+</li>
+<li>
+All original source code, including inline source code, is
+distributed under the terms of the
+<a href="https://www.gnu.org/licenses/gpl-3.0.en.html">
+GNU General Public License v3</a>.
+</li>
+</ul>
+<p>
+The complete source code for this website can be found
+<a href="https://github.com/alexanderneville/docs">here</a>.
+</p>
+</div>
+
+</article>
+
+<aside>
+<div id="theme-buttons">
+<h3>Theme</h3>
+<div>
+<div class="link-button">
+<i class="nf nf-oct-sun"></i> <p>Light</p>
+<button class="light-theme-button">
+<span></span>
+</button>
+</div>
+<div class="link-button">
+<i class="nf nf-oct-moon"></i> <p>Dark</p>
+<button class="dark-theme-button">
+<span></span>
+</button>
+</div>
+<div class="link-button">
+<i class="nf nf-md-circle_half_full"></i> <p>System</p>
+<button class="system-theme-button">
+<span></span>
+</button>
+</div>
+</div>
+</div>
+<div id="menu-links">
+<h3>On this Website</h3>
+<div>
+<div class="link-button">
+<i class="nf nf-oct-person"></i> <p>Home</p>
+<a href="https://aneville.uk"><span></span></a>
+</div>
+<div class="link-button">
+<i class="nf nf-oct-pencil"></i> <p>Blog</p>
+<a href="/"><span></span></a>
+</div>
+<div class="link-button">
+<i class="nf nf-md-scale nf-md-scale_balance"></i> <p>License</p>
+<a href="/index.html#license-notice" onclick="toggleMainMenu()"><span></span></a>
+</div>
+</div>
+</div>
+</aside>
+
+</main>
+
+${ footer.html() }
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+@use "fonts";
+@use "colours";
+
+body {
+  font-family: IBMPlexSans, sans;
+  background-color: var(--bg-main);
+  color: var(--fg-main);
+  margin: 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: var(--fg-secondary);
+  text-decoration: none;
+}
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+  list-style-position: inside;
+  padding: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  li {
+    padding: 0;
+  }
+  li.active {
+    font-weight: bold;
+    background-color: var(--bg-secondary);
+  }
+  li:hover {
+    background-color: var(--bg-emphasis);
+  }
+  a {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+}

@@ -1,0 +1,29 @@
+:root.light-theme,
+:root.system-theme {
+  --fg-main: #000000;
+  --fg-secondary: #656e77;
+  --bg-emphasis: #d9d9d9;
+  --bg-secondary: #f6f6f6;
+  --bg-main: #ffffff;
+  --accent: #015692;
+}
+
+:root.dark-theme {
+  --fg-main: #ffffff;
+  --fg-secondary: #d6d6d6;
+  --bg-emphasis: #333333;
+  --bg-secondary: #1c1b1b;
+  --bg-main: #101010;
+  --accent: #88aece;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root.system-theme {
+    --fg-main: #ffffff;
+    --fg-secondary: #d6d6d6;
+    --bg-emphasis: #333333;
+    --bg-secondary: #1c1b1b;
+    --bg-main: #101010;
+    --accent: #88aece;
+  }
+}
