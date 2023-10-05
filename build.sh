@@ -12,7 +12,7 @@ find src -mindepth 1 \( -name '.git' -o -name 'out' -o -name 'res' -o -name 'dot
 find out -mindepth 1 -maxdepth 1 -type d | xargs -I {} cp ./redirect.html {}/index.html
 
 command="pandoc -f markdown -t html -s"
-mathjax_flag="--mathjax=https://cdn.aneville.uk/mathjax/tex-svg.js"
+mathjax_flag="--mathjax=https://cdn.afneville.com/mathjax/tex-svg.js"
 constant_flags="--data-dir=$(pwd) --metadata-file=./metadata.yaml --lua-filter=md-to-html-links.lua --filter=pandoc-crossref --no-highlight"
 
 buildblogpost="${command} ${constant_flags} ${mathjax_flag} --shift-heading-level-by=1 --template=templates/blog-post -o"
