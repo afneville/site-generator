@@ -1,9 +1,7 @@
 #page-header {
-  position: sticky;
-  top: 0;
-  z-index: 2;
   background-color: var(--bg-main);
-  border-bottom: 1px solid var(--bg-emphasis);
+  z-index: 2;
+  // border-bottom: 1px solid var(--bg-emphasis);
   button {
     background-color: inherit;
     border: none;
@@ -12,29 +10,42 @@
       font-size: 2rem;
     }
   }
-  #site-logo {
-    font-weight: bold;
+  #site-banner {
+    img {
+      border-radius: 0.25rem;
+      height: 2rem;
+    }
     color: var(--fg-main);
-    i {
-      font-size: 2rem;
+    font-family: IBMPlexMono, monospace;
+  }
+  #site-banner:active p {
+    text-decoration: underline;
+  }
+  @media(hover: hover) {
+    #site-banner:hover p {
+      text-decoration: underline;
+      // color: var(--fg-secondary);
     }
   }
-  #site-logo:hover p {
-    text-decoration: none;
+
+  @media(max-width: 450px) {
+    #site-banner p {
+      display: none;
+    }
   }
-  #theme-switch-button i {
-    font-size: 1.5rem;
-  }
+  // #theme-switch-button i {
+  //   font-size: 1.5rem;
+  // }
   #menu {
     display: flex;
     align-items: center;
     gap: 1rem;
+    position: relative;
     .page-start-button {
       margin-right: 0.25rem;
     }
     #theme-dropdown-container,
     #menu-dropdown-container {
-      position: relative;
       float: right;
       .dropdown-menu {
         position: absolute;
@@ -65,11 +76,6 @@
         }
       }
     }
-    @media screen and (max-width: 95ch) {
-      #theme-dropdown-container {
-        display: none;
-      }
-    }
     @media (hover: hover) {
       #theme-dropdown-container:hover button i,
       #menu-dropdown-container:hover button i {
@@ -79,11 +85,17 @@
   }
 }
 
-#page-header > div {
+#page-header > div:first-child {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background-color: var(--bg-main);
+}
+
+#page-header {
+  hr {
+    margin: 0;
+  }
 }

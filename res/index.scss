@@ -34,62 +34,6 @@ main {
   position: relative;
 }
 
-aside {
-  display: none;
-  position: static;
-  z-index: 1;
-  max-height: none;
-  background-color: var(--bg-main);
-  #theme-buttons,
-  #menu-links {
-    display: none;
-    i {
-      font-size: 1rem;
-    }
-    .link-button {
-      padding: 0.5rem;
-      color: var(--fg-secondary);
-    }
-    @media (hover: hover) {
-      .link-button:hover {
-        background-color: var(--bg-emphasis);
-      }
-    }
-    .link-button:active {
-      background-color: var(--bg-emphasis);
-    }
-    margin-bottom: 1.5rem;
-  }
-  h3 {
-    margin-left: 0.5rem;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  @media (hover: hover) {
-    #theme-buttons .link-button:hover,
-    #menu-links .link-button:hover {
-      background-color: var(--bg-emphasis);
-    }
-  }
-  button {
-    background-color: inherit;
-    border: none;
-    color: var(--fg-main);
-  }
-  #theme-buttons,
-  #menu-links {
-    display: block;
-    div {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-  }
-  #page-navigation {
-    display: none;
-  }
-}
-
 article {
   width: 100%;
   overflow-x: clip;
@@ -99,10 +43,7 @@ article {
 }
 
 #pages {
-  // margin-top: 2rem;
   display: grid;
-  // max-width: 60ch;
-  // margin-inline: auto;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 1fr;
   gap: 1rem;

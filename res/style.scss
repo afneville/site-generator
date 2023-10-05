@@ -3,7 +3,6 @@
 @use "elements";
 @use "page-header";
 @use "page-footer";
-@use "aside";
 @use "classes";
 
 html {
@@ -21,85 +20,90 @@ body {
 }
 
 main {
-  display: grid;
-  grid-template-areas: "content sidebar";
-  grid-template-columns: calc(100% - calc(23ch + 1rem)) 23ch;
-  gap: 1rem;
   flex-grow: 1;
   margin-top: 1rem;
   margin-bottom: 1rem;
   position: relative;
 }
 
-@media screen and (max-width: 95ch) {
-  aside {
-    grid-area: content;
-    display: none;
-    position: static;
-    // top: 0;
-    // left: 0;
-    z-index: 1;
-    // width: 100%;
-    max-height: none;
-    // height: 100vh;
-    // background-color: var(--bg-main);
-
-    button {
-      background-color: inherit;
-      border: none;
-      color: var(--fg-main);
-    }
-    #theme-buttons,
-    #menu-links {
-      display: block;
-      div {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-    }
-    #page-navigation {
-      display: none;
-    }
-  }
-  main {
-    display: grid;
-    grid-template-areas: "content";
-    grid-template-columns: 100%;
-    gap: 0;
-  }
-}
-
 article {
-  #metadata {
-    display: flex;
-    gap: 0.75rem;
-    color: var(--fg-secondary);
-    p {
-      margin: 0;
-    }
-  }
   grid-area: content;
   width: 100%;
   overflow-x: clip;
   header {
     margin-bottom: 2rem;
   }
-  [id] {
-    scroll-margin-top: calc(3.5rem);
-  }
+  // [id] {
+  //   scroll-margin-top: calc(3.5rem);
+  // }
   :is(h2, h3, h4, h5, h6) > a,
   :is(h2, h3, h4, h5, h6) > a:link,
   :is(h2, h3, h4, h5, h6) > a:visited {
     opacity: 0.5;
     color: var(--fg-secondary);
     text-decoration: none;
-    font-size: 0.75em;
+    font-size: 1rem;
     transition: opacity 1s;
   }
   :is(h2, h3, h4, h5, h6):hover > a,
   :is(h2, h3, h4, h5, h6):hover > a:link,
   :is(h2, h3, h4, h5, h6):hover > a:visited {
     opacity: 1;
+  }
+}
+
+#pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid var(--bg-emphasis);
+  border-radius: 0.5rem;
+  h3 {
+    margin-top: 0;
+  }
+  a {
+    line-height: 2rem;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  // @media (hover: hover) {
+  //   a:hover {
+  //     text-decoration: underline;
+  //   }
+  // }
+}
+
+#license-notice {
+  line-height: 1.5rem;
+  ul {
+    padding-left: 2rem;
+  }
+}
+
+.centre {
+  text-align: center;
+  flex-grow: initial;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (hover: hover) {
+    .link-button:hover {
+      background-color: var(--bg-emphasis);
+    }
+  }
+  .link-button:active {
+    background-color: var(--bg-emphasis);
+  }
+  .link-button {
+    padding: 0.5rem;
+    color: var(--fg-secondary);
   }
 }

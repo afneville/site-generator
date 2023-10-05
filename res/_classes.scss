@@ -1,6 +1,6 @@
 .content-width {
   width: calc(100% - 2em);
-  max-width: 105ch;
+  max-width: 75ch;
   padding-inline: 1rem;
   overflow-x: clip;
   margin-inline: auto;
@@ -49,12 +49,6 @@
   }
 }
 
-// @media (hover: hover) {
-//   .link-button:hover p {
-//     text-decoration: underline;
-//   }
-// }
-
 .copyButton {
   position: absolute;
   display: none;
@@ -62,8 +56,6 @@
   right: 0;
   color: var(--fg-main);
   transition: color 1s;
-  // border-left: 1px solid var(--fg-secondary);
-  // border-bottom: 1px solid var(--fg-secondary);
   padding-inline: 0.5rem;
   padding-top: 0.125rem;
   padding-bottom: 0.25rem;
@@ -103,4 +95,17 @@ pre:hover .copyButton {
 
 .nocaption + figcaption {
   display: none;
+}
+
+.info-array {
+  color: var(--fg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  row-gap: 0;
+  flex-wrap: wrap;
+  p {
+    margin: 0;
+  }
 }

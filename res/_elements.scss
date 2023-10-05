@@ -4,7 +4,7 @@ p {
 
 pre {
   position: relative;
-  margin-inline: 0.5em;
+  // margin-inline: 0.5em;
   line-height: 1.5em;
 }
 
@@ -13,6 +13,7 @@ code {
   font-size: 0.9em;
   max-width: 100%;
   overflow-x: scroll;
+  border-radius: 0.25rem;
 }
 
 img {
@@ -30,6 +31,7 @@ figure {
 }
 
 figcaption {
+  display: none;
   margin-inline: auto;
   color: var(--fg-secondary);
 }
@@ -64,4 +66,12 @@ a:visited {
 
 a:active {
   text-decoration: underline;
+}
+
+hr {
+  display: block;
+  height: 0px;
+  border: 0;
+  padding: 0;
+  border-top: 1px solid var(--bg-emphasis);
 }
