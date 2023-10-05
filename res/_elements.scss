@@ -75,3 +75,12 @@ hr {
   padding: 0;
   border-top: 1px solid var(--bg-emphasis);
 }
+
+blockquote p {
+  font-style: italic;
+}
+
+:not(pre) code {
+  background-color: var(--bg-secondary);
+  padding-inline: 0.25em;
+}

@@ -16,7 +16,7 @@ async function copyCode(block, copyButton) {
       para.innerHTML = null;
       para.appendChild(icon);
     },
-    500,
+    1000,
     copyButton
   );
 }
@@ -57,25 +57,5 @@ function addAnchorLinks() {
   }
 }
 
-function addTOC() {
-  let list = document.querySelector("main aside nav ul");
-  let article = document.querySelector("main article");
-  let headings = article.querySelectorAll("h2");
-  if (headings.length === 0) {
-    document.querySelector("main aside").style.display = "none";
-    document.querySelector("main").style.display = "block";
-    return;
-  }
-  for (let i = 0; i < headings.length; i++) {
-    let newEntry = document.createElement("li");
-    let newLink = document.createElement("a");
-    newLink.href = headings[i].querySelector("a").href;
-    newLink.innerText = headings[i].innerText;
-    newEntry.appendChild(newLink);
-    list.appendChild(newEntry);
-  }
-}
-
 addClipboardItems();
 addAnchorLinks();
-addTOC();

@@ -16,7 +16,8 @@
       height: 2rem;
     }
     color: var(--fg-main);
-    font-family: IBMPlexMono, monospace;
+    // font-family: IBMPlexMono, monospace;
+    font-weight: bold;
   }
   #site-banner:active p {
     text-decoration: underline;

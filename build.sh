@@ -1,28 +1,32 @@
 #!/bin/sh
 
-mkdir -p out
 mkdir -p src
-rm -rf out/*
-rm -rf src/*
+mkdir -p out
 mkdir -p out/res
+rm -rf src/*
 cp -r ~/vcon/docs/* ./src/
-cp -r src/res/* out/res/
-cp -r res/*.js out/res/
+cp -r src/res/* ./out/res/
+
+# copy directories
 find src -mindepth 1 \( -name '.git' -o -name 'out' -o -name 'res' -o -name 'dot' \) -prune -o -type d | cut -d/ -f2- | xargs -I {} mkdir -p out/{}
 find out -mindepth 1 -maxdepth 1 -type d | xargs -I {} cp ./redirect.html {}/index.html
 
+# build commands
 command="pandoc -f markdown -t html -s"
 mathjax_flag="--mathjax=https://cdn.afneville.com/mathjax/tex-svg.js"
 constant_flags="--data-dir=$(pwd) --metadata-file=./metadata.yaml --lua-filter=md-to-html-links.lua --filter=pandoc-crossref --no-highlight"
-
 buildblogpost="${command} ${constant_flags} ${mathjax_flag} --shift-heading-level-by=1 --template=templates/blog-post -o"
-buildiframe="${command} ${constant_flags} --template=templates/contents-iframe -o"
 buildindexsection="${command} ${constant_flags} --template=templates/index-section"
 buildindex="${command} ${constant_flags} --template=templates/index-page --metadata title=index -o"
 
-find src -mindepth 2 -type f -name '*.md' | grep -v '_contents' | cut -d'/' -f2- | cut -d'.' -f1 | xargs -I% $buildblogpost ./out/%.html ./src/%.md
-find src -mindepth 2 -type f -name '_contents.md' | cut -d'/' -f2- | cut -d'.' -f1 | xargs -I% $buildiframe out/%.html src/%.md
+# articles
+posts="$(find src -mindepth 2 -type f -name '*.md' | grep -v '_contents')"
+for i in $posts; do
+    echo "$(tail -n +5 "$(dirname ${i})/_contents.md")" > "$(dirname ${i})/__contents.md"
+    $buildblogpost "$(echo "$i" | cut -d'/' -f2- | cut -d'.' -f1 | xargs -I% echo out/%.html )" "$i" templates/see-also.md "$(dirname ${i})/__contents.md" templates/back.md
+done
 
+# index and error pages
 echo "<div id=\"pages\">" >out/_index.html
 find src -type f -name '_contents.md' | sort | xargs -n1 $buildindexsection >>out/_index.html
 echo "</div>" >>out/_index.html

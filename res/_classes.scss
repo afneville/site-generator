@@ -51,28 +51,18 @@
 
 .copyButton {
   position: absolute;
-  display: none;
-  top: 0;
-  right: 0;
+  top: 0.625em;
+  right: 0.625em;
   color: var(--fg-main);
-  transition: color 1s;
+  border: 1px solid var(--bg-emphasis);
+  border-radius: 0.25rem;
   padding-inline: 0.5rem;
   padding-top: 0.125rem;
   padding-bottom: 0.25rem;
-  background-color: var(--bg-emphasis);
+  // background-color: var(--bg-emphasis);
   p {
     margin: 0;
     font-family: IBMPlexSans;
-  }
-}
-
-pre:hover .copyButton {
-  display: block;
-}
-
-@media (hover: none) {
-  .copyButton {
-    display: block;
   }
 }
 
