@@ -59,7 +59,8 @@
   padding-inline: 0.5rem;
   padding-top: 0.125rem;
   padding-bottom: 0.25rem;
-  // background-color: var(--bg-emphasis);
+  background-color: var(--bg-secondary);
+  z-index: 2;
   p {
     margin: 0;
     font-family: IBMPlexSans;

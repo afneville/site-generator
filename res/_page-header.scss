@@ -20,12 +20,11 @@
     font-weight: bold;
   }
   #site-banner:active p {
-    text-decoration: underline;
+    color: var(--fg-secondary);
   }
   @media(hover: hover) {
     #site-banner:hover p {
-      text-decoration: underline;
-      // color: var(--fg-secondary);
+      color: var(--fg-secondary);
     }
   }
 
