@@ -1,0 +1,6 @@
+figPrefix:
+  - ""
+  - ""
+figPrefixTemplate: $$i$$
+linkReferences: true
+figureTemplate: $$figureTitle$$ $$i$$
