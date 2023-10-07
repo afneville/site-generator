@@ -33,9 +33,16 @@
       display: none;
     }
   }
-  // #theme-switch-button i {
-  //   font-size: 1.5rem;
-  // }
+  #theme-switch-button {
+    div {
+      display: flex;
+      align-items: center;
+      height: 2rem;
+    }
+    i {
+      font-size: 1.5rem;
+    }
+  }
   #menu {
     display: flex;
     align-items: center;
