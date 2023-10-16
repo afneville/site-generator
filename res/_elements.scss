@@ -31,7 +31,7 @@ figure {
 }
 
 figcaption {
-  display: none;
+  // display: none;
   margin-inline: auto;
   color: var(--fg-secondary);
 }
@@ -83,4 +83,25 @@ blockquote p {
 :not(pre) code {
   background-color: var(--bg-secondary);
   padding-inline: 0.25em;
+}
+
+table {
+  margin-inline: auto;
+  border-collapse: collapse;
+  border: 1px solid var(--bg-emphasis);
+}
+tbody tr:nth-child(odd) {
+  background-color: var(--bg);
+}
+tbody tr:nth-child(even) {
+  background-color: var(--bg-secondary);
+}
+th,
+td {
+  padding: 0.5rem;
+}
+
+thead {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--bg-emphasis);
 }
