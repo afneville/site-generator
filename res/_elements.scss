@@ -89,6 +89,7 @@ table {
   margin-inline: auto;
   border-collapse: collapse;
   border: 1px solid var(--bg-emphasis);
+  table-layout: fixed;
 }
 tbody tr:nth-child(odd) {
   background-color: var(--bg);
@@ -99,6 +100,16 @@ tbody tr:nth-child(even) {
 th,
 td {
   padding: 0.5rem;
+}
+
+th,
+td {
+  border-right: 1px solid var(--bg-emphasis);
+}
+
+th:last-child,
+td:last-child {
+  border-right: none;
 }
 
 thead {
