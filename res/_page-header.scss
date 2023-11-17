@@ -12,23 +12,29 @@
   }
   #site-banner {
     img {
-      border-radius: 0.25rem;
-      height: 2rem;
+      border: 1px solid var(--bg-emphasis);
+      border-radius: 4px;
+      height: calc(2rem - 2px);
     }
     color: var(--fg-main);
     // font-family: IBMPlexMono, monospace;
-    font-weight: bold;
+    // font-weight: bold;
+    p {
+      color: var(--fg-secondary);
+    }
   }
   #site-banner:active p {
-    color: var(--fg-secondary);
+    text-decoration: underline;
+    // color: var(--fg-secondary);
   }
-  @media(hover: hover) {
+  @media (hover: hover) {
     #site-banner:hover p {
+      text-decoration: underline;
       color: var(--fg-secondary);
     }
   }
 
-  @media(max-width: 450px) {
+  @media (max-width: 450px) {
     #site-banner p {
       display: none;
     }

@@ -22,7 +22,7 @@ section-indices := $(foreach section,$(sections-out),$(section)/index.html)
 js-in := $(wildcard $(static-res-dir)/*.js)
 js-out := $(patsubst $(static-res-dir)/%,$(res-out-dir)/%,$(js-in))
 scss-in := $(wildcard $(static-res-dir)/*.scss)
-css-out := $(res-out-dir)/style.css $(res-out-dir)/index.css
+css-out := $(res-out-dir)/style.css
 
 
 current_date := $$(date '+%Y-%m-%d')
@@ -40,14 +40,14 @@ buildindex := $(command) $(constant_flags) --template=templates/index-page --met
 
 all: $(index-page-out) $(error-page-out) $(articles-out) $(section-indices) $(site-res-out) $(js-out) $(css-out)
 
-$(index-page-out): $(index-page-in)
+$(index-page-out): $(index-page-in) | $(out-dir)
 	$(buildindex) $(index-page-out) $(index-page-in)
 
 $(index-page-in): $(section-contents) | $(tmp-dir)
-	rm -f $(index-page-in)
-	echo "<div id=\"pages\">" >out/_index.html
+	-rm -f $(index-page-in)
+	echo "<div id=\"pages\">" >$(index-page-in)
 	for i in $(section-contents); do $(buildindexsection) $$i >> $(index-page-in); done
-	echo "</div>" >>out/_index.html
+	echo "</div>" >>$(index-page-in)
 
 $(error-page-out): templates/error.html | $(out-dir)
 	echo "" | pandoc -s -f html -t html --data-dir="./" --template=$< --metadata title=- -o $@
