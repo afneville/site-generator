@@ -1,17 +1,17 @@
-# Document Export Script
+# Export Markdown Documents to HTML
 
-The build script used to build my _documentation_ website - an example
-of how Pandoc and shell could be used to create a markdown blog. Other,
-arguably better solutions include the [Hugo](https://gohugo.io/) and
-[Jekyll](https://jekyllrb.com/) static site builders.
+The components required to build
+[my documentation website](https://docs.afneville.com) - an example of
+how Pandoc, make and shell could be used to create a markdown blog.
+Other, arguably better solutions include the [Hugo](https://gohugo.io/)
+and [Jekyll](https://jekyllrb.com/) static site builders.
 
-The `build.sh` script will automatically fetch the latest version of
-[my documents](https://github.com/afneville/docs) and build an HTML
-version in `out/`.
+To fetch the source markdown documents [from here](https://github.com/afneville/docs) and build the site under `out/`,
+run:
 
 ```sh
-chmod u+x build.sh
-./build.sh
+git submodule update --init --remote --recursive
+make
 ```
 
 ## Requirements
