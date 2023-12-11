@@ -20,16 +20,18 @@
     // font-family: IBMPlexMono, monospace;
     // font-weight: bold;
     p {
-      color: var(--fg-secondary);
+      i {
+        font-size: 1.25rem;
+      }
     }
   }
   #site-banner:active p {
-    text-decoration: underline;
-    // color: var(--fg-secondary);
+    // text-decoration: underline;
+    color: var(--fg-secondary);
   }
   @media (hover: hover) {
     #site-banner:hover p {
-      text-decoration: underline;
+      // text-decoration: underline;
       color: var(--fg-secondary);
     }
   }

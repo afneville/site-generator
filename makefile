@@ -8,16 +8,17 @@ res-out-dir := $(out-dir)/res
 site-res-in-dir := $(in-dir)/res
 static-res-dir := res
 
-articles-in := $(filter-out $(in-dir)/%/_contents.md,$(wildcard $(in-dir)/**/*.md))
-articles-out := $(patsubst $(in-dir)/%.md,$(out-dir)/%.html,$(articles-in))
-site-res-in := $(wildcard $(site-res-in-dir)/**/*)
-site-res-out := $(patsubst $(in-dir)/%,$(out-dir)/%,$(site-res-in))
-section-contents := $(filter $(in-dir)/%/_contents.md,$(wildcard $(in-dir)/**/*.md))
 exclude := $(in-dir)/README% $(in-dir)/LICENSE% $(in-dir)/res
-sections-in := $(filter-out $(exclude),$(wildcard $(in-dir)/*))
+all-srcs := $(filter-out $(exclude),$(shell find $(in-dir) -name '*.md'))
+articles-in := $(filter-out $(in-dir)/%/_contents.md,$(all-srcs))
+articles-out := $(patsubst $(in-dir)/%.md,$(out-dir)/%.html,$(articles-in))
+site-res-in := $(shell find $(site-res-in-dir) -mindepth 1)
+site-res-out := $(patsubst $(in-dir)/%,$(out-dir)/%,$(site-res-in))
+section-contents := $(filter $(in-dir)/%/_contents.md,$(all-srcs))
+sections-in := $(dir $(section-contents))
 sections-out := $(patsubst $(in-dir)/%,$(out-dir)/%,$(sections-in))
 sections-tmp := $(patsubst $(in-dir)/%,$(tmp-dir)/%,$(sections-in))
-section-contents-tmp := $(patsubst $(in-dir)/%/_contents.md,$(tmp-dir)/%.md,$(section-contents))
+section-contents-tmp := $(patsubst $(in-dir)/%/_contents.md,$(tmp-dir)/%/_contents.md,$(section-contents))
 section-indices := $(foreach section,$(sections-out),$(section)/index.html)
 js-in := $(wildcard $(static-res-dir)/*.js)
 js-out := $(patsubst $(static-res-dir)/%,$(res-out-dir)/%,$(js-in))
@@ -40,21 +41,24 @@ buildindex := $(command) $(constant_flags) --template=templates/index-page --met
 
 all: $(index-page-out) $(error-page-out) $(articles-out) $(section-indices) $(site-res-out) $(js-out) $(css-out)
 
-$(index-page-out): $(index-page-in) | $(out-dir)
+sections:
+	echo $(all-articles)
+
+$(index-page-out): $(index-page-in) templates/index-page.html | $(out-dir)
 	$(buildindex) $(index-page-out) $(index-page-in)
 
-$(index-page-in): $(section-contents) | $(tmp-dir)
+$(index-page-in): $(section-contents) templates/index-section.html | $(tmp-dir)
 	-rm -f $(index-page-in)
 	echo "<div id=\"pages\">" >$(index-page-in)
-	for i in $(section-contents); do $(buildindexsection) $$i >> $(index-page-in); done
+	for i in $(sort $(section-contents)); do $(buildindexsection) $$i >> $(index-page-in); done
 	echo "</div>" >>$(index-page-in)
 
 $(error-page-out): templates/error.html | $(out-dir)
 	echo "" | pandoc -s -f html -t html --data-dir="./" --template=$< --metadata title=- -o $@
 
 .SECONDEXPANSION:
-$(articles-out): $(out-dir)/%.html: $(in-dir)/%.md $(tmp-dir)/$$(firstword $$(subst /, ,%)).md | $(sections-out)
-	$(buildblogpost) $@ $< templates/see-also.md $(patsubst %/,$(tmp-dir)/%.md,$(dir $(patsubst $(out-dir)/%,%,$@))) templates/back.md
+$(articles-out): $(out-dir)/%.html: $(in-dir)/%.md $(tmp-dir)/$$(dir %)_contents.md | $(sections-out)
+	$(buildblogpost) $@ $< templates/see-also.md $(patsubst %/,$(tmp-dir)/%/_contents.md,$(dir $(patsubst $(out-dir)/%,%,$@))) templates/back.md
 
 $(site-res-out): $(res-out-dir)/%: $(site-res-in-dir)/% | $(res-out-dir)
 	cp -r $(site-res-in-dir)/* $(res-out-dir)
@@ -65,7 +69,7 @@ $(js-out): $(res-out-dir)/%.js: $(static-res-dir)/%.js | $(res-out-dir)
 $(css-out): $(scss-in) | $(res-out-dir)
 	sass $(static-res-dir):$(res-out-dir)
 
-$(section-contents-tmp): $(tmp-dir)/%.md: $(in-dir)/%/_contents.md | $(tmp-dir)
+$(section-contents-tmp): $(tmp-dir)/%/_contents.md: $(in-dir)/%/_contents.md | $(tmp-dir) $(sections-tmp)
 	tail -n +5 $< > $@
 
 $(section-indices): templates/redirect.html | $(sections-out)
@@ -75,6 +79,9 @@ $(res-out-dir) : | $(out-dir)
 	mkdir -p $@
 
 $(sections-out) : | $(out-dir)
+	mkdir -p $@
+
+$(sections-tmp) : | $(tmp-dir)
 	mkdir -p $@
 
 $(out-dir):

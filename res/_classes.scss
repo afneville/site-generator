@@ -68,6 +68,12 @@
 }
 
 @media (hover: hover) {
+  .copyButton {
+    display: none;
+  }
+  pre:hover .copyButton {
+    display: block;
+  }
   .bold-hover:hover {
     font-weight: bold !important;
   }
