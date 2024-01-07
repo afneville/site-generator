@@ -41,10 +41,7 @@ buildindex := $(command) $(constant_flags) --template=templates/index-page --met
 
 all: $(index-page-out) $(error-page-out) $(articles-out) $(section-indices) $(site-res-out) $(js-out) $(css-out)
 
-sections:
-	echo $(all-articles)
-
-$(index-page-out): $(index-page-in) templates/index-page.html | $(out-dir)
+$(index-page-out): $(index-page-in) templates/index-page.html templates/header.html templates/footer.html | $(out-dir)
 	$(buildindex) $(index-page-out) $(index-page-in)
 
 $(index-page-in): $(section-contents) templates/index-section.html | $(tmp-dir)
@@ -53,11 +50,11 @@ $(index-page-in): $(section-contents) templates/index-section.html | $(tmp-dir)
 	for i in $(sort $(section-contents)); do $(buildindexsection) $$i >> $(index-page-in); done
 	echo "</div>" >>$(index-page-in)
 
-$(error-page-out): templates/error.html | $(out-dir)
+$(error-page-out): templates/error.html templates/header.html templates/footer.html | $(out-dir)
 	echo "" | pandoc -s -f html -t html --data-dir="./" --template=$< --metadata title=- -o $@
 
 .SECONDEXPANSION:
-$(articles-out): $(out-dir)/%.html: $(in-dir)/%.md $(tmp-dir)/$$(dir %)_contents.md | $(sections-out)
+$(articles-out): $(out-dir)/%.html: $(in-dir)/%.md $(tmp-dir)/$$(dir %)_contents.md templates/blog-post.html templates/header.html templates/footer.html templates/see-also.md templates/back.md | $(sections-out)
 	$(buildblogpost) $@ $< templates/see-also.md $(patsubst %/,$(tmp-dir)/%/_contents.md,$(dir $(patsubst $(out-dir)/%,%,$@))) templates/back.md
 
 $(site-res-out): $(res-out-dir)/%: $(site-res-in-dir)/% | $(res-out-dir)
