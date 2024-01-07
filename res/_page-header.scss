@@ -13,30 +13,31 @@
   #site-banner {
     img {
       border: 1px solid var(--bg-emphasis);
-      border-radius: 4px;
+      border-radius: 6px;
       height: calc(2rem - 2px);
     }
     color: var(--fg-main);
     // font-family: IBMPlexMono, monospace;
     // font-weight: bold;
     p {
+      font-weight: bold;
       i {
         font-size: 1.25rem;
       }
     }
   }
-  #site-banner:active p {
+  #site-banner:active {
     // text-decoration: underline;
     color: var(--fg-secondary);
   }
   @media (hover: hover) {
-    #site-banner:hover p {
+    #site-banner:hover {
       // text-decoration: underline;
       color: var(--fg-secondary);
     }
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 300px) {
     #site-banner p {
       display: none;
     }

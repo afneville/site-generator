@@ -25,10 +25,9 @@
   }
 }
 
-#page-footer > div:last-child {
+#footer-info {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  row-gap: 0.5rem;
 }
