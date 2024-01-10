@@ -14,8 +14,19 @@ $endif$
 $if(keywords)$
 <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
 $endif$
+$if(path)$
+<meta property="og:url" content="https://docs.afneville.com/$path$.html" />
+$endif$
+<meta property="og:type" content="website" />
+<meta property="og:title" content="$pagetitle$" />
+<meta
+  property="og:image"
+  content="https://cdn.afneville.com/res/panda-landscape.png" />
 $if(description-meta)$
 <meta name="description" content="$description-meta$" />
+<meta
+  property="og:description"
+  content="$description-meta$" />
 $endif$
 <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
 $for(header-includes)$

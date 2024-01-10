@@ -14,9 +14,6 @@ $endif$
 $if(keywords)$
 <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
 $endif$
-$if(description-meta)$
-<meta name="description" content="$description-meta$" />
-$endif$
 <title>Alexander Neville - Docs</title>
 $for(header-includes)$
 $header-includes$
@@ -24,6 +21,16 @@ $endfor$
 $if(math)$
 $math$
 $endif$
+<meta property="og:url" content="https://docs.afneville.com" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Alexander Neville - Docs" />
+<meta
+  property="og:image"
+  content="https://cdn.afneville.com/res/panda-landscape.png" />
+<meta name="description" content="A collection of articles and notes." />
+<meta
+  property="og:description"
+  content="A collection of articles and notes." />
 <link rel="icon" href="https://cdn.afneville.com/res/panda.png" />
 <link href="/res/style.css" rel="stylesheet" />
 <script src="/res/windowEvents.js" defer></script>

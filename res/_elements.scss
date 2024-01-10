@@ -116,3 +116,7 @@ thead {
   background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--bg-emphasis);
 }
+
+li + li {
+  margin-top: 0.75rem;
+}
