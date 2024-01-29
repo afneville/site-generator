@@ -25,7 +25,8 @@ js-in := $(wildcard $(static-res-dir)/*.js)
 js-out := $(patsubst $(static-res-dir)/%,$(res-out-dir)/%,$(js-in))
 scss-in := $(wildcard $(static-res-dir)/*.scss)
 css-out := $(res-out-dir)/style.css
-
+static-res-in := $(static-res-dir)/fonts $(static-res-dir)/libs
+static-res-out := $(patsubst $(static-res-dir)/%,$(res-out-dir)/%,$(static-res-in))
 
 current_date := $$(date '+%Y-%m-%d')
 current_time := $$(date '+%H:%M:%S')
@@ -41,6 +42,9 @@ buildindex := $(command) $(constant_flags) --template=templates/index-page --met
 .PHONY: clean
 
 all: $(index-page-out) $(error-page-out) $(articles-out) $(section-indices) $(site-res-out) $(js-out) $(css-out)
+
+test:
+	echo $(static-res-out)
 
 $(index-page-out): $(index-page-in) templates/index-page.html templates/header.html templates/footer.html | $(out-dir)
 	$(buildindex) $(index-page-out) $(index-page-in)
@@ -73,8 +77,12 @@ $(section-contents-tmp): $(tmp-dir)/%/_contents.md: $(in-dir)/%/_contents.md | $
 $(section-indices): templates/redirect.html | $(sections-out)
 	cp $< $@
 
+# $(static-res-out) : $(static-res-in) | $(res-out-dir)
+# 	cp -r $(static-res-in) $(res-out-dir)
+
 $(res-out-dir) : | $(out-dir)
 	mkdir -p $@
+	cp -r $(static-res-in) $@
 
 $(sections-out) : | $(out-dir)
 	mkdir -p $@
@@ -87,7 +95,6 @@ $(out-dir):
 
 $(tmp-dir):
 	mkdir -p $@
-
 
 clean:
 	-rm -rf $(out-dir)

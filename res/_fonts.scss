@@ -1,110 +1,110 @@
+// @font-face {
+//   font-family: LiberationMono;
+//   src: url("https://cdn.afneville.com/fonts/LiberationMono-Regular.ttf")
+//     format("truetype");
+// }
+//
+// @font-face {
+//   font-family: LiberationMono;
+//   src: url("https://cdn.afneville.com/fonts/LiberationMono-Italic.ttf")
+//     format("truetype");
+//   font-style: italic;
+// }
+//
+// @font-face {
+//   font-family: LiberationMono;
+//   src: url("https://cdn.afneville.com/fonts/LiberationMono-Bold.ttf")
+//     format("truetype");
+//   font-weight: bold;
+// }
+//
+// @font-face {
+//   font-family: LiberationMono;
+//   src: url("https://cdn.afneville.com/fonts/LiberationMono-BoldItalic.ttf")
+//     format("truetype");
+//   font-weight: bold;
+//   font-style: italic;
+// }
+//
+// @font-face {
+//   font-family: LiberationSans;
+//   src: url("https://cdn.afneville.com/fonts/LiberationSans-Regular.ttf")
+//     format("truetype");
+// }
+//
+// @font-face {
+//   font-family: LiberationSans;
+//   src: url("https://cdn.afneville.com/fonts/LiberationSans-Italic.ttf")
+//     format("truetype");
+//   font-style: italic;
+// }
+//
+// @font-face {
+//   font-family: LiberationSans;
+//   src: url("https://cdn.afneville.com/fonts/LiberationSans-Bold.ttf")
+//     format("truetype");
+//   font-weight: bold;
+// }
+//
+// @font-face {
+//   font-family: LiberationSans;
+//   src: url("https://cdn.afneville.com/fonts/LiberationSans-BoldItalic.ttf")
+//     format("truetype");
+//   font-weight: bold;
+//   font-style: italic;
+// }
+//
+// @font-face {
+//   font-family: LiberationSerif;
+//   src: url("https://cdn.afneville.com/fonts/LiberationSerif-Regular.ttf")
+//     format("truetype");
+// }
+//
+// @font-face {
+//   font-family: LiberationSerif;
+//   src: url("https://cdn.afneville.com/fonts/LiberationSerif-Italic.ttf")
+//     format("truetype");
+//   font-style: italic;
+// }
+//
+// @font-face {
+//   font-family: LiberationSerif;
+//   src: url("https://cdn.afneville.com/fonts/LiberationSerif-Bold.ttf")
+//     format("truetype");
+//   font-weight: bold;
+// }
+//
+// @font-face {
+//   font-family: LiberationSerif;
+//   src: url("https://cdn.afneville.com/fonts/LiberationSerif-BoldItalic.ttf")
+//     format("truetype");
+//   font-weight: bold;
+//   font-style: italic;
+// }
+
 @font-face {
-  font-family: LiberationMono;
-  src: url("https://cdn.afneville.com/fonts/LiberationMono-Regular.ttf")
+  font-family: IBMPlexMono;
+  src: url("./fonts/IBMPlexMono-Regular.ttf")
     format("truetype");
 }
 
 @font-face {
-  font-family: LiberationMono;
-  src: url("https://cdn.afneville.com/fonts/LiberationMono-Italic.ttf")
+  font-family: IBMPlexMono;
+  src: url("./fonts/IBMPlexMono-Italic.ttf")
     format("truetype");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: LiberationMono;
-  src: url("https://cdn.afneville.com/fonts/LiberationMono-Bold.ttf")
-    format("truetype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: LiberationMono;
-  src: url("https://cdn.afneville.com/fonts/LiberationMono-BoldItalic.ttf")
-    format("truetype");
-  font-weight: bold;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: LiberationSans;
-  src: url("https://cdn.afneville.com/fonts/LiberationSans-Regular.ttf")
-    format("truetype");
-}
-
-@font-face {
-  font-family: LiberationSans;
-  src: url("https://cdn.afneville.com/fonts/LiberationSans-Italic.ttf")
-    format("truetype");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: LiberationSans;
-  src: url("https://cdn.afneville.com/fonts/LiberationSans-Bold.ttf")
-    format("truetype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: LiberationSans;
-  src: url("https://cdn.afneville.com/fonts/LiberationSans-BoldItalic.ttf")
-    format("truetype");
-  font-weight: bold;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: LiberationSerif;
-  src: url("https://cdn.afneville.com/fonts/LiberationSerif-Regular.ttf")
-    format("truetype");
-}
-
-@font-face {
-  font-family: LiberationSerif;
-  src: url("https://cdn.afneville.com/fonts/LiberationSerif-Italic.ttf")
-    format("truetype");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: LiberationSerif;
-  src: url("https://cdn.afneville.com/fonts/LiberationSerif-Bold.ttf")
-    format("truetype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: LiberationSerif;
-  src: url("https://cdn.afneville.com/fonts/LiberationSerif-BoldItalic.ttf")
-    format("truetype");
-  font-weight: bold;
   font-style: italic;
 }
 
 @font-face {
   font-family: IBMPlexMono;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexMono-Regular.ttf")
-    format("truetype");
-}
-
-@font-face {
-  font-family: IBMPlexMono;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexMono-Italic.ttf")
-    format("truetype");
-  font-style: italic;
-}
-
-@font-face {
-  font-family: IBMPlexMono;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexMono-Bold.ttf")
+  src: url("./fonts/IBMPlexMono-Bold.ttf")
     format("truetype");
   font-weight: bold;
 }
 
 @font-face {
   font-family: IBMPlexMono;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexMono-BoldItalic.ttf")
+  src: url("./fonts/IBMPlexMono-BoldItalic.ttf")
     format("truetype");
   font-weight: bold;
   font-style: italic;
@@ -112,27 +112,27 @@
 
 @font-face {
   font-family: IBMPlexSans;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexSans-Regular.ttf")
+  src: url("./fonts/IBMPlexSans-Regular.ttf")
     format("truetype");
 }
 
 @font-face {
   font-family: IBMPlexSans;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexSans-Italic.ttf")
+  src: url("./fonts/IBMPlexSans-Italic.ttf")
     format("truetype");
   font-style: italic;
 }
 
 @font-face {
   font-family: IBMPlexSans;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexSans-Bold.ttf")
+  src: url("./fonts/IBMPlexSans-Bold.ttf")
     format("truetype");
   font-weight: bold;
 }
 
 @font-face {
   font-family: IBMPlexSans;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexSans-BoldItalic.ttf")
+  src: url("./fonts/IBMPlexSans-BoldItalic.ttf")
     format("truetype");
   font-weight: bold;
   font-style: italic;
@@ -140,27 +140,27 @@
 
 @font-face {
   font-family: IBMPlexSerif;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexSerif-Regular.ttf")
+  src: url("./fonts/IBMPlexSerif-Regular.ttf")
     format("truetype");
 }
 
 @font-face {
   font-family: IBMPlexSerif;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexSerif-Italic.ttf")
+  src: url("./fonts/IBMPlexSerif-Italic.ttf")
     format("truetype");
   font-style: italic;
 }
 
 @font-face {
   font-family: IBMPlexSerif;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexSerif-Bold.ttf")
+  src: url("./fonts/IBMPlexSerif-Bold.ttf")
     format("truetype");
   font-weight: bold;
 }
 
 @font-face {
   font-family: IBMPlexSerif;
-  src: url("https://cdn.afneville.com/fonts/IBMPlexSerif-BoldItalic.ttf")
+  src: url("./fonts/IBMPlexSerif-BoldItalic.ttf")
     format("truetype");
   font-weight: bold;
   font-style: italic;

@@ -19,9 +19,15 @@ $if(path)$
 $endif$
 <meta property="og:type" content="website" />
 <meta property="og:title" content="$pagetitle$" />
+$if(image-meta)$
+<meta
+  property="og:image"
+  content="/res/$image-meta$" />
+$else$
 <meta
   property="og:image"
   content="https://cdn.afneville.com/res/panda-landscape.png" />
+$endif$
 $if(description-meta)$
 <meta name="description" content="$description-meta$" />
 <meta
@@ -35,17 +41,17 @@ $endfor$
 $if(math)$
 $math$
 $endif$
-<link rel="icon" href="https://cdn.afneville.com/res/panda.png" />
+<link rel="icon" href="https://cdn.afneville.com/res/panda-circle.png" />
 <link href="/res/style.css" rel="stylesheet" />
 <script src="/res/onPageLoad.js" defer></script>
 <script src="/res/windowEvents.js" defer></script>
 <script src="/res/buttons.js" defer></script>
 <script src="/res/theme.js" defer></script>
-<link rel="stylesheet" href="https://cdn.afneville.com/highlightjs/styles/stackoverflow-light.min.css" id="code-blocks-light">
-<link rel="stylesheet alternate" href="https://cdn.afneville.com/highlightjs/styles/stackoverflow-dark.min.css" id="code-blocks-dark">
-<script src="https://cdn.afneville.com/highlightjs/highlight.min.js"></script>
+<link rel="stylesheet" href="/res/libs/highlightjs/styles/stackoverflow-light.min.css" id="code-blocks-light">
+<link rel="stylesheet alternate" href="/res/libs/highlightjs/styles/stackoverflow-dark.min.css" id="code-blocks-dark">
+<script src="/res/libs/highlightjs/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-<link rel="stylesheet" href="https://cdn.afneville.com/nerd-fonts/nerd-fonts.css" />
+<link rel="stylesheet" href="/res/fonts/nerd-fonts/nerd-fonts.css" />
 </head>
 
 <body>
