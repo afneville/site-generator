@@ -1,13 +1,15 @@
-# Export Markdown Documents to HTML
+# Static Site Generator
 
-The components required to build
-[my documentation website](https://docs.afneville.com) - an example of
-how Pandoc, make and shell could be used to create a markdown blog.
-Other, arguably better solutions include the [Hugo](https://gohugo.io/)
-and [Jekyll](https://jekyllrb.com/) static site builders.
+This repository contains the components required to build
+[my documentation website](https://docs.afneville.com), by using Pandoc
+to convert [my markdown documents](https://github.com/afneville/docs) to
+HTML.
 
-To fetch the source markdown documents [from here](https://github.com/afneville/docs) and build the site under `out/`,
-run:
+This solution precisely meets my own requirements. More mature and
+flexible solutions include the [Hugo](https://gohugo.io/) and
+[Jekyll](https://jekyllrb.com/) static site generators.
+
+To generate the website in the `out/` directory:
 
 ```sh
 git submodule update --init --remote --recursive
@@ -18,3 +20,4 @@ make
 
 - [Sass](https://sass-lang.com/install/)
 - [Pandoc](https://pandoc.org/installing.html)
+- [Make](https://www.gnu.org/software/make/)
