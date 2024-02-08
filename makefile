@@ -35,7 +35,7 @@ current_commit_short := $$(git -C src rev-parse --short HEAD)
 command := pandoc -f markdown -t html -s
 mathjax_flag  := --mathjax=https://cdn.afneville.com/mathjax/tex-svg.js
 constant_flags := --data-dir=$$(pwd) --metadata-file=./res/metadata.yaml --lua-filter=res/md-to-html-links.lua --filter=pandoc-crossref --no-highlight
-buildblogpost := $(command) $(constant_flags) $(mathjax_flag) --shift-heading-level-by=1 --template=templates/blog-post -o
+buildblogpost := $(command) $(constant_flags) $(mathjax_flag) --shift-heading-level-by=1 --template=templates/blog-post
 buildindexsection := $(command) $(constant_flags) --template=templates/index-section
 buildindex := $(command) $(constant_flags) --template=templates/index-page --metadata title=index --metadata date=$(current_date) --metadata time=$(current_time) --metadata commit=$(current_commit) --metadata shortcommit=$(current_commit_short) -o
 
@@ -60,7 +60,8 @@ $(error-page-out): templates/error.html templates/header.html templates/footer.h
 
 .SECONDEXPANSION:
 $(articles-out): $(out-dir)/%.html: $(in-dir)/%.md $(tmp-dir)/$$(dir %)_contents.md templates/blog-post.html templates/header.html templates/footer.html templates/see-also.md templates/back.md | $(sections-out)
-	$(buildblogpost) $@ $< templates/see-also.md $(patsubst %/,$(tmp-dir)/%/_contents.md,$(dir $(patsubst $(out-dir)/%,%,$@))) templates/back.md
+	echo $(patsubst $(out-dir)/%,%,$@)
+	$(buildblogpost) --metadata filepath=$(patsubst $(out-dir)/%,%,$@) -o $@ $< templates/see-also.md $(patsubst %/,$(tmp-dir)/%/_contents.md,$(dir $(patsubst $(out-dir)/%,%,$@))) templates/back.md
 
 $(site-res-out): $(res-out-dir)/%: $(site-res-in-dir)/% | $(res-out-dir)
 	cp -r $(site-res-in-dir)/* $(res-out-dir)

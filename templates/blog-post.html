@@ -14,8 +14,8 @@ $endif$
 $if(keywords)$
 <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
 $endif$
-$if(path)$
-<meta property="og:url" content="https://docs.afneville.com/$path$.html" />
+$if(filepath)$
+<meta property="og:url" content="https://docs.afneville.com/$filepath$" />
 $endif$
 <meta property="og:type" content="website" />
 <meta property="og:title" content="$pagetitle$" />
@@ -71,6 +71,14 @@ $if(date)$
 <p class="date"><i class="nf nf-oct-pencil"></i> $date$</p>
 $endif$
 </div>
+$if(image-meta)$
+<div id="title-image-container">
+<img id="title-image" src="/res/$image-meta$" alt="Title Image">
+$if(image-meta-credit)$
+<a href="$image-meta-credit$"><i class= "nf nf-oct-link"></i> Image Credit & License</a>
+$endif$
+</div>
+$endif$
 </header>
 $endif$
 $body$

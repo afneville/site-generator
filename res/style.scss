@@ -141,3 +141,29 @@ article {
 #summary-paragraph {
   margin-top: 0;
 }
+
+#title-image-container {
+  text-align: right;
+  margin-top: 2rem;
+  width: 50ch;
+  max-width: calc(100% - 2rem);
+  margin-inline: auto;
+  a {
+    color: var(--fg-secondary);
+    padding-right: 1rem;
+    font-size: 0.75rem;
+  }
+}
+#title-image {
+  width: 100%;
+  margin-inline: auto;
+  border-radius: 1rem;
+  border: 1px solid var(--bg-emphasis);
+  margin-bottom: 0.125rem;
+}
+
+:root.dark-theme {
+  img {
+    filter: brightness(90%);
+  }
+}

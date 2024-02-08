@@ -25,5 +25,8 @@
     --bg-secondary: #1c1b1b;
     --bg-main: #101010;
     --accent: #88aece;
+    img {
+      filter: brightness(90%);
+    }
   }
 }
