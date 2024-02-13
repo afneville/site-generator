@@ -15,6 +15,8 @@ articles-out := $(patsubst $(in-dir)/%.md,$(out-dir)/%.html,$(articles-in))
 site-res-in := $(shell find $(site-res-in-dir) -mindepth 1)
 site-res-out := $(patsubst $(in-dir)/%,$(out-dir)/%,$(site-res-in))
 section-contents := $(filter $(in-dir)/%/_contents.md,$(all-srcs))
+sections-sorted := $(shell echo $(dir $(section-contents)) | xargs -n1 basename | sort)
+section-contents-sorted := $(foreach section,$(sections-sorted),$(filter $(in-dir)%$(section)/_contents.md,$(section-contents)))
 sections-in := $(dir $(section-contents))
 sections-out := $(patsubst $(in-dir)/%,$(out-dir)/%,$(sections-in))
 directories-out := $(patsubst $(in-dir)/%,$(out-dir)/%,$(filter-out $(in-dir)/res%,$(shell find $(in-dir) -mindepth 1 -type d)))
@@ -44,7 +46,8 @@ buildindex := $(command) $(constant_flags) --template=templates/index-page --met
 all: $(index-page-out) $(error-page-out) $(articles-out) $(section-indices) $(site-res-out) $(js-out) $(css-out)
 
 test:
-	echo $(static-res-out)
+	@echo $(sections-sorted)
+	@echo $(section-contents-sorted)
 
 $(index-page-out): $(index-page-in) templates/index-page.html templates/header.html templates/footer.html | $(out-dir)
 	$(buildindex) $(index-page-out) $(index-page-in)
@@ -52,7 +55,7 @@ $(index-page-out): $(index-page-in) templates/index-page.html templates/header.h
 $(index-page-in): $(section-contents) templates/index-section.html | $(tmp-dir)
 	-rm -f $(index-page-in)
 	echo "<div id=\"pages\">" >$(index-page-in)
-	for i in $(sort $(section-contents)); do $(buildindexsection) $$i >> $(index-page-in); done
+	for i in $(section-contents-sorted); do $(buildindexsection) $$i >> $(index-page-in); done
 	echo "</div>" >>$(index-page-in)
 
 $(error-page-out): templates/error.html templates/header.html templates/footer.html | $(out-dir)
