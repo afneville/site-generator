@@ -74,7 +74,7 @@ const nth = (d) => {
 function formatDates() {
   let publishDate = document.querySelector('.date').innerText.slice(1).split('-');
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  let prettyDate = ` ${Number(publishDate[2])}${nth(Number(publishDate[2]))} ${months[Number(publishDate[1])-1]} ${publishDate[0]}`;
+  let prettyDate = ` ${Number(publishDate[2])} ${months[Number(publishDate[1])-1]} ${publishDate[0]}`;
   console.log(prettyDate);
   document.querySelector('.date').innerHTML = null;
   let icon = document.createElement("i");
