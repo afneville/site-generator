@@ -3,3 +3,4 @@ tmp/
 res/fonts/
 res/libs/
 deploy.sh
+.terraform*
