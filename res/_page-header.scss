@@ -16,28 +16,30 @@
       border-radius: 50%;
       height: calc(2rem - 6px);
     }
+    p {
+      font-weight: bold;
+    }
+  }
+  .link-button {
     color: var(--fg-main);
     // font-family: IBMPlexMono, monospace;
     // font-weight: bold;
-    p {
-      font-weight: bold;
-      i {
-        font-size: 1.25rem;
-      }
+    i {
+      font-size: 1.5rem;
     }
   }
-  #site-banner:active {
+  .link-button:active {
     // text-decoration: underline;
     color: var(--fg-secondary);
   }
   @media (hover: hover) {
-    #site-banner:hover {
+    .link-button:hover {
       // text-decoration: underline;
       color: var(--fg-secondary);
     }
   }
 
-  @media (max-width: 350px) {
+  @media (max-width: 450px) {
     #site-banner p {
       display: none;
     }
@@ -80,6 +82,10 @@
           padding-inline: 1rem;
         }
         @media (hover: hover) {
+          .link-button:hover {
+            // text-decoration: underline;
+            color: var(--fg-main);
+          }
           button:hover {
             background-color: none;
           }
