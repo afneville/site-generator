@@ -8,6 +8,7 @@ jobs:
     env:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.secret_access_key }}
       AWS_ACCESS_KEY_ID: ${{ secrets.access_key_id }}
+      AWS_DEFAULT_REGION: eu-west-2
       lock_bucket: ${{ vars.lock_bucket }}
       lock_key: ${{ vars.lock_key }}
       lock_table: ${{ vars.lock_table }}
@@ -50,9 +51,9 @@ jobs:
           distribution_id:
             ${{ steps.infra-config.outputs.distribution_id }}
         run: |
-          sudo apt install -y curl
-          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unzip awscliv2.zip
-          sudo ./aws/install
+          # sudo apt install -y curl
+          # curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          # unzip awscliv2.zip
+          # sudo ./aws/install
           aws s3 cp --recursive --include="*" --exclude="res/fonts/*" --exclude="res/libs/*" out "s3://$content_bucket"
           aws cloudfront create-invalidation --paths="/*" --distribution-id $distribution_id
