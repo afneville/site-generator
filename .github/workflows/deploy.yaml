@@ -3,13 +3,54 @@ name: Deploy Site
 on: [push]
 
 jobs:
-  build:
+  deploy-site:
     runs-on: ubuntu-latest
+    env:
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.secret_access_key }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.access_key_id }}
+      lock_bucket: ${{ vars.lock_bucket }}
+      lock_key: ${{ vars.lock_key }}
+      lock_table: ${{ vars.lock_table }}
+      content_bucket: ${{ vars.content_bucket }}
+      domain: ${{ vars.domain }}
+      subdomain: ${{ vars.subdomain }}
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: "recursive"
-      - name:
-        run: ls
-      - name:
-        run: ls src
+      - name: Configure Infrastructure
+        id: infra-config
+        run: |
+          sudo apt update
+          sudo apt install -y wget gpg lsb-release
+          wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+          sudo apt update
+          sudo apt install -y terraform
+          cd infra
+          terraform init -backend-config="bucket=$lock_bucket" -backend-config="key=$lock_key" -backend-config="dynamodb_table=$lock_table" -backend-config="region=eu-west-2"
+          terraform plan -var="bucket_name=$content_bucket" -var="domain=$domain" -var="subdomain=$subdomain" -out tfplan
+          terraform apply tfplan
+          distribution_id="$(terraform output -raw distribution_id)"
+          echo "distribution_id=${distribution_id}" >> "$GITHUB_OUTPUT"
+      - name: Build Site
+        run: |
+          sudo apt update
+          sudo apt install -y make pandoc sass wget xz-utils
+          wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.16.0a/pandoc-crossref-Linux.tar.xz
+          wget https://github.com/sass/dart-sass/releases/download/1.77.8/dart-sass-1.77.8-linux-x64.tar.gz
+          tar -xvf pandoc-crossref-Linux.tar.xz
+          tar -xvf dart-sass-1.77.8-linux-x64.tar.gz
+          export PATH=".:./dart-sass:$PATH"
+          make
+      - name: Deploy Site
+        env:
+          distribution_id:
+            ${{ steps.infra-config.outputs.distribution_id }}
+        run: |
+          sudo apt install -y curl
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install
+          aws s3 cp --recursive --include="*" --exclude="res/fonts/*" --exclude="res/libs/*" out "s3://$content_bucket"
+          aws cloudfront create-invalidation --paths="/*" --distribution-id $distribution_id
