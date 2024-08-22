@@ -36,12 +36,14 @@ jobs:
       - name: Build Site
         run: |
           sudo apt update
-          sudo apt install -y make pandoc sass wget xz-utils
-          wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.16.0a/pandoc-crossref-Linux.tar.xz
+          sudo apt install -y make sass wget xz-utils
+          wget https://github.com/jgm/pandoc/releases/download/3.3/pandoc-3.3-linux-amd64.tar.gz
+          wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.17.1c/pandoc-crossref-Linux.tar.xz
           wget https://github.com/sass/dart-sass/releases/download/1.77.8/dart-sass-1.77.8-linux-x64.tar.gz
+          tar -xvf pandoc-3.3-linux-amd64.tar.gz
           tar -xvf pandoc-crossref-Linux.tar.xz
           tar -xvf dart-sass-1.77.8-linux-x64.tar.gz
-          export PATH=".:./dart-sass:$PATH"
+          export PATH=".:./dart-sass:./pandoc-3.3/bin:$PATH"
           make
       - name: Deploy Site
         env:
