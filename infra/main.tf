@@ -132,3 +132,7 @@ resource "aws_route53_record" "cloudfront_domain" {
     evaluate_target_health = false
   }
 }
+
+output "distribution_id" {
+  value = aws_cloudfront_distribution.cdn.id
+}

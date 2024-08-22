@@ -34,7 +34,7 @@ current_date := $$(date '+%Y-%m-%d')
 current_time := $$(date '+%H:%M:%S')
 current_commit := $$(git -C src rev-parse HEAD)
 current_commit_short := $$(git -C src rev-parse --short HEAD)
-command := pandoc -f markdown+rebase_relative_paths -t html -s
+command := pandoc -f markdown -t html -s
 mathjax_flag  := --mathjax=https://cdn.afneville.com/mathjax/tex-svg.js
 constant_flags := --data-dir=$$(pwd) --metadata-file=./res/metadata.yaml --lua-filter=res/md-to-html-links.lua --filter=pandoc-crossref --no-highlight
 buildblogpost := $(command) $(constant_flags) $(mathjax_flag) --shift-heading-level-by=1 --template=templates/blog-post
