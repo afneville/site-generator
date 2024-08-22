@@ -9,6 +9,7 @@ command line arguments, environment variables or a variable /
 configuration file:
 
 ```sh
-tf init -backend-config="bucket=bucket_name" -backend-config="key=state_path" -backend-config="dynamodb_table=lock_table" -backend-config="region=your_region"
-tf apply -var="bucket_name=bucket_name" -var="domain=example.com" -var="subdomain=sub.example.com"
+terraform init -backend-config="bucket=bucket_name" -backend-config="key=state_path" -backend-config="dynamodb_table=lock_table" -backend-config="region=your_region"
+terraform plan -var="bucket_name=bucket_name" -var="domain=example.com" -var="subdomain=sub.example.com" -out tfplan
+terraform apply tfplan
 ```
