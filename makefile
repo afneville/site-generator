@@ -27,8 +27,8 @@ js-in := $(wildcard $(static-res-dir)/*.js)
 js-out := $(patsubst $(static-res-dir)/%,$(res-out-dir)/%,$(js-in))
 scss-in := $(wildcard $(static-res-dir)/*.scss)
 css-out := $(res-out-dir)/style.css
-static-res-in := $(static-res-dir)/fonts $(static-res-dir)/libs
-static-res-out := $(patsubst $(static-res-dir)/%,$(res-out-dir)/%,$(static-res-in))
+# static-res-in := $(static-res-dir)/fonts $(static-res-dir)/libs
+# static-res-out := $(patsubst $(static-res-dir)/%,$(res-out-dir)/%,$(static-res-in))
 
 current_date := $$(date '+%Y-%m-%d')
 current_time := $$(date '+%H:%M:%S')
@@ -82,7 +82,7 @@ $(section-indices): templates/redirect.html | $(sections-out)
 
 $(res-out-dir) : | $(out-dir)
 	mkdir -p $@
-	cp -r $(static-res-in) $@
+	# cp -r $(static-res-in) $@
 
 $(sections-out) : | $(out-dir)
 	mkdir -p $@
